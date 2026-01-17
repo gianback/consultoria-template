@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Testimonials from '../components/Testimonials.astro';
+import PricingPlans from '../components/PricingPlans.astro';
+import Features from '../components/Features.astro';
+---
+
+<Layout
+  title="Consultoría Empresarial Profesional"
+  description="ConsultoríaPro - Transformamos su negocio con estrategias que generan resultados. Consultoría estratégica, optimización de procesos y análisis de datos para empresas."
+  currentPage="inicio"
+>
+  <Hero />
+
+  <Testimonials />
+
+  <PricingPlans />
+
+  <Features />
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">¿Listo para transformar su negocio?</h2>
+        <p class="cta-text">
+          Agende una consulta gratuita y descubra cómo podemos ayudarle a alcanzar sus objetivos empresariales.
+        </p>
+        <div class="cta-actions">
+          <a href="/contacto#agendar" class="btn btn-primary btn-lg">
+            Agendar consulta gratuita
+          </a>
+          <a href="tel:+34900123456" class="cta-phone">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            O llámenos: +34 900 123 456
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cta-section {
+    background-color: var(--color-gray-50);
+    padding: var(--spacing-20) 0;
+  }
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .cta-text {
+    font-size: var(--text-lg);
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+  }
+
+  .cta-phone {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    color: var(--color-secondary);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .cta-phone:hover {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .cta-title {
+      font-size: var(--text-3xl);
+    }
+  }
+</style>

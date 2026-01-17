@@ -1,0 +1,458 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const equipo = [
+  {
+    nombre: "Dr. Alejandro Mendoza",
+    puesto: "Director General",
+    foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+    descripcion: "MBA por IESE Business School. 20+ años liderando transformaciones empresariales en Fortune 500."
+  },
+  {
+    nombre: "Dra. Patricia Vega",
+    puesto: "Directora de Estrategia",
+    foto: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    descripcion: "PhD en Economía por la Universidad de Oxford. Especialista en análisis de mercados emergentes."
+  },
+  {
+    nombre: "Ing. Roberto Castillo",
+    puesto: "Director de Operaciones",
+    foto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    descripcion: "Ingeniero Industrial por MIT. Experto en optimización de cadenas de suministro y lean management."
+  },
+  {
+    nombre: "Lic. Carolina Herrera",
+    puesto: "Directora de Transformación Digital",
+    foto: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    descripcion: "Especialista en tecnologías disruptivas. Ex directora de innovación en empresas tecnológicas líderes."
+  }
+];
+
+const valores = [
+  {
+    titulo: "Integridad",
+    descripcion: "Actuamos con honestidad y transparencia en cada interacción con nuestros clientes."
+  },
+  {
+    titulo: "Excelencia",
+    descripcion: "Buscamos constantemente superar las expectativas y entregar resultados excepcionales."
+  },
+  {
+    titulo: "Innovación",
+    descripcion: "Aplicamos las metodologías más avanzadas para resolver los desafíos más complejos."
+  },
+  {
+    titulo: "Compromiso",
+    descripcion: "Nos involucramos como socios estratégicos en el éxito de cada organización."
+  }
+];
+---
+
+<Layout
+  title="Nosotros"
+  description="Conozca al equipo de ConsultoríaPro - Más de 15 años transformando empresas con experiencia, innovación y compromiso con resultados."
+  currentPage="nosotros"
+>
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-hero-content">
+        <span class="section-tag">Sobre nosotros</span>
+        <h1 class="about-hero-title">Transformamos empresas con pasión y experiencia</h1>
+        <p class="about-hero-subtitle">
+          Somos un equipo de consultores apasionados por ayudar a las organizaciones
+          a alcanzar su máximo potencial a través de estrategias innovadoras y ejecutables.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-content section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Sobre la Empresa</h2>
+          <p>
+            <strong>ConsultoríaPro</strong> nació en 2009 con una visión clara: ser el socio estratégico
+            que las empresas necesitan para navegar en un entorno empresarial cada vez más complejo
+            y competitivo. Desde entonces, hemos acompañado a más de 500 organizaciones en su camino
+            hacia la excelencia operativa y el crecimiento sostenible.
+          </p>
+          <p>
+            Nuestro enfoque se distingue por combinar el rigor analítico con una profunda comprensión
+            del factor humano en las organizaciones. Creemos firmemente que la transformación real
+            solo ocurre cuando las estrategias se diseñan considerando tanto los datos como las personas
+            que las implementarán.
+          </p>
+          <p>
+            A lo largo de nuestra trayectoria, hemos desarrollado metodologías propias que nos permiten
+            diagnosticar con precisión los desafíos de cada cliente y diseñar soluciones a medida que
+            generan impacto medible en el corto, mediano y largo plazo.
+          </p>
+        </div>
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=500&fit=crop"
+            alt="Equipo de ConsultoríaPro trabajando"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="mission-vision section bg-gray">
+    <div class="container">
+      <div class="mv-grid">
+        <article class="mv-card">
+          <div class="mv-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+          </div>
+          <h3>Nuestra Misión</h3>
+          <p>
+            Empoderar a las organizaciones con conocimientos, herramientas y estrategias que les permitan
+            tomar decisiones informadas, optimizar sus operaciones y alcanzar un crecimiento sostenible
+            en mercados cada vez más dinámicos y competitivos.
+          </p>
+        </article>
+        <article class="mv-card">
+          <div class="mv-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3>Nuestra Visión</h3>
+          <p>
+            Ser reconocidos como la firma de consultoría de referencia en el mundo hispanohablante,
+            distinguiéndonos por la calidad de nuestros resultados, la innovación de nuestros métodos
+            y el impacto positivo que generamos en cada organización que asesoramos.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Lo que nos define</span>
+        <h2 class="section-title">Nuestros Valores</h2>
+        <p class="section-subtitle">
+          Los principios que guían cada decisión y cada interacción con nuestros clientes
+        </p>
+      </div>
+      <div class="values-grid">
+        {valores.map((valor, index) => (
+          <article class="value-card">
+            <span class="value-number">{String(index + 1).padStart(2, '0')}</span>
+            <h3 class="value-title">{valor.titulo}</h3>
+            <p class="value-description">{valor.descripcion}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team section bg-gray">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">El equipo</span>
+        <h2 class="section-title">Nuestro Valor Diferencial</h2>
+        <p class="section-subtitle">
+          Un equipo multidisciplinario de expertos comprometidos con su éxito
+        </p>
+      </div>
+      <div class="team-grid">
+        {equipo.map((miembro) => (
+          <article class="team-card">
+            <div class="team-photo">
+              <img src={miembro.foto} alt={miembro.nombre} loading="lazy" />
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">{miembro.nombre}</h3>
+              <span class="team-position">{miembro.puesto}</span>
+              <p class="team-bio">{miembro.descripcion}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta section">
+    <div class="container">
+      <div class="about-cta-content">
+        <h2>¿Quiere conocernos mejor?</h2>
+        <p>Agende una reunión y descubra cómo podemos colaborar juntos</p>
+        <a href="/contacto" class="btn btn-primary btn-lg">
+          Contactar ahora
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero */
+  .about-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    padding: var(--spacing-24) 0 var(--spacing-16);
+    text-align: center;
+  }
+
+  .about-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    display: inline-block;
+    padding: var(--spacing-2) var(--spacing-4);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .about-hero-title {
+    font-size: var(--text-5xl);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .about-hero-subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-gray-200);
+    line-height: 1.7;
+  }
+
+  /* About Content */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-12);
+    align-items: center;
+  }
+
+  .about-text h2 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .about-text p {
+    color: var(--color-secondary-dark);
+    line-height: 1.8;
+  }
+
+  .about-image img {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Mission & Vision */
+  .mv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-8);
+  }
+
+  .mv-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-10);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .mv-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-lg);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-5);
+  }
+
+  .mv-card h3 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .mv-card p {
+    color: var(--color-secondary-dark);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* Values */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-6);
+  }
+
+  .value-card {
+    text-align: center;
+    padding: var(--spacing-6);
+  }
+
+  .value-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .value-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .value-description {
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Team */
+  .bg-gray .section-tag {
+    background-color: rgba(26, 54, 93, 0.1);
+    color: var(--color-primary);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-6);
+  }
+
+  .team-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .team-photo {
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  .team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .team-card:hover .team-photo img {
+    transform: scale(1.05);
+  }
+
+  .team-info {
+    padding: var(--spacing-5);
+    text-align: center;
+  }
+
+  .team-name {
+    font-size: var(--text-lg);
+    margin-bottom: var(--spacing-1);
+  }
+
+  .team-position {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: var(--spacing-3);
+  }
+
+  .team-bio {
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* CTA */
+  .about-cta {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    text-align: center;
+  }
+
+  .about-cta-content h2 {
+    font-size: var(--text-4xl);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .about-cta-content p {
+    font-size: var(--text-lg);
+    color: var(--color-gray-200);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .about-cta .btn-primary {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .about-cta .btn-primary:hover {
+    background-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-image {
+      order: -1;
+    }
+
+    .mv-grid,
+    .values-grid,
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-hero-title {
+      font-size: var(--text-4xl);
+    }
+
+    .mv-grid,
+    .values-grid,
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

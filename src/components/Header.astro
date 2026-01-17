@@ -1,0 +1,385 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+
+const servicios = [
+  { nombre: 'Consultoría Estratégica', slug: 'consultoria-estrategica' },
+  { nombre: 'Optimización de Procesos', slug: 'optimizacion-procesos' },
+  { nombre: 'Análisis de Datos', slug: 'analisis-datos' },
+  { nombre: 'Transformación Digital', slug: 'transformacion-digital' },
+  { nombre: 'Gestión del Cambio', slug: 'gestion-cambio' },
+];
+---
+
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="logo">
+        <span class="logo-icon">CP</span>
+        <span class="logo-text">Consultoría<span class="logo-accent">Pro</span></span>
+      </a>
+
+      <button class="mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="/" class={`nav-link ${currentPage === 'inicio' ? 'active' : ''}`}>
+            Inicio
+          </a>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="false">
+            Servicios
+            <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ul class="dropdown-menu">
+            {servicios.map((servicio) => (
+              <li>
+                <a href={`/servicios/${servicio.slug}`} class="dropdown-link">
+                  {servicio.nombre}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/nosotros" class={`nav-link ${currentPage === 'nosotros' ? 'active' : ''}`}>
+            Nosotros
+          </a>
+        </li>
+        <li class="nav-item nav-cta">
+          <a href="/contacto" class="btn btn-primary">
+            Contacto
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base);
+  }
+
+  .header.scrolled {
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    border-radius: var(--radius-md);
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary-dark);
+  }
+
+  .logo-accent {
+    color: var(--color-accent);
+  }
+
+  /* Navegación */
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-secondary-dark);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-primary);
+    background-color: var(--color-gray-50);
+  }
+
+  .nav-cta {
+    margin-left: var(--spacing-4);
+  }
+
+  /* Dropdown */
+  .has-dropdown {
+    position: relative;
+  }
+
+  .dropdown-trigger {
+    font-family: inherit;
+  }
+
+  .dropdown-icon {
+    transition: transform var(--transition-fast);
+  }
+
+  .has-dropdown:hover .dropdown-icon,
+  .has-dropdown.active .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 250px;
+    padding: var(--spacing-2);
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-fast), visibility var(--transition-fast);
+    list-style: none;
+    margin: 0;
+  }
+
+  .has-dropdown:hover .dropdown-menu,
+  .has-dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: var(--spacing-3) var(--spacing-4);
+    color: var(--color-secondary-dark);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .dropdown-link:hover {
+    background-color: var(--color-gray-50);
+    color: var(--color-primary);
+  }
+
+  /* Mobile Toggle */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .hamburger {
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-primary-dark);
+    transition: background-color var(--transition-fast);
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-primary-dark);
+    transition: transform var(--transition-fast);
+  }
+
+  .hamburger::before {
+    top: -7px;
+  }
+
+  .hamburger::after {
+    bottom: -7px;
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger {
+    background-color: transparent;
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .mobile-toggle {
+      display: flex;
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: var(--spacing-4);
+      background-color: var(--color-white);
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform var(--transition-base);
+    }
+
+    .nav-menu.open {
+      transform: translateX(0);
+    }
+
+    .nav-item {
+      border-bottom: 1px solid var(--color-gray-100);
+    }
+
+    .nav-link {
+      width: 100%;
+      padding: var(--spacing-4);
+      justify-content: space-between;
+    }
+
+    .nav-cta {
+      margin-left: 0;
+      margin-top: var(--spacing-4);
+      border-bottom: none;
+    }
+
+    .nav-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .has-dropdown {
+      position: static;
+    }
+
+    .dropdown-menu {
+      position: static;
+      transform: none;
+      min-width: 100%;
+      box-shadow: none;
+      background-color: var(--color-gray-50);
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+      opacity: 1;
+      visibility: visible;
+      transition: max-height var(--transition-base), padding var(--transition-base);
+    }
+
+    .has-dropdown.active .dropdown-menu {
+      max-height: 500px;
+      padding: var(--spacing-2);
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector('.header');
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile menu toggle
+  mobileToggle?.addEventListener('click', () => {
+    const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+    mobileToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+    navMenu?.classList.toggle('open');
+    document.body.style.overflow = isExpanded ? '' : 'hidden';
+  });
+
+  // Dropdown toggle for mobile
+  dropdownTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      if (window.innerWidth <= 1024) {
+        e.preventDefault();
+        const parent = trigger.closest('.has-dropdown');
+        parent?.classList.toggle('active');
+      }
+    });
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('.nav-link:not(.dropdown-trigger)').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        navMenu?.classList.remove('open');
+        mobileToggle?.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+</script>

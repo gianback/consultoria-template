@@ -1,0 +1,272 @@
+---
+const planes = [
+  {
+    nombre: "Startup",
+    destacado: false,
+    descripcion: "Ideal para emprendimientos y pequeñas empresas que buscan establecer bases sólidas",
+    precio: "Desde €1,500",
+    periodo: "/proyecto",
+    caracteristicas: [
+      "Diagnóstico empresarial inicial",
+      "Plan estratégico básico",
+      "2 sesiones de consultoría mensual",
+      "Análisis de mercado simplificado",
+      "Reporte de recomendaciones",
+      "Soporte por email"
+    ],
+    cta: "Comenzar",
+    ctaLink: "/contacto?plan=startup"
+  },
+  {
+    nombre: "Business",
+    destacado: true,
+    descripcion: "Perfecto para empresas en crecimiento que necesitan optimizar operaciones y escalar",
+    precio: "Desde €3,500",
+    periodo: "/proyecto",
+    caracteristicas: [
+      "Todo lo del plan Startup",
+      "Optimización de procesos",
+      "4 sesiones de consultoría mensual",
+      "Dashboard de métricas clave",
+      "Capacitación al equipo directivo",
+      "Soporte prioritario 24/7",
+      "Seguimiento trimestral"
+    ],
+    cta: "Seleccionar plan",
+    ctaLink: "/contacto?plan=business"
+  },
+  {
+    nombre: "Corporate",
+    destacado: false,
+    descripcion: "Solución integral para grandes empresas con necesidades complejas y proyectos de alto impacto",
+    precio: "Personalizado",
+    periodo: "",
+    caracteristicas: [
+      "Todo lo del plan Business",
+      "Consultor dedicado exclusivo",
+      "Transformación digital completa",
+      "Análisis de datos avanzado",
+      "Gestión del cambio organizacional",
+      "Integración con stakeholders",
+      "Informes ejecutivos mensuales",
+      "Garantía de resultados"
+    ],
+    cta: "Contactar ventas",
+    ctaLink: "/contacto?plan=corporate"
+  }
+];
+---
+
+<section class="pricing section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Planes</span>
+      <h2 class="section-title">Soluciones a su medida</h2>
+      <p class="section-subtitle">
+        Elija el plan que mejor se adapte a las necesidades de su empresa
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      {planes.map((plan) => (
+        <article class={`pricing-card ${plan.destacado ? 'featured' : ''}`}>
+          {plan.destacado && (
+            <div class="featured-badge">Más popular</div>
+          )}
+          <header class="pricing-header">
+            <h3 class="plan-name">{plan.nombre}</h3>
+            <p class="plan-description">{plan.descripcion}</p>
+            <div class="plan-price">
+              <span class="price">{plan.precio}</span>
+              {plan.periodo && <span class="period">{plan.periodo}</span>}
+            </div>
+          </header>
+          <ul class="plan-features">
+            {plan.caracteristicas.map((caracteristica) => (
+              <li class="feature">
+                <svg class="feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span>{caracteristica}</span>
+              </li>
+            ))}
+          </ul>
+          <footer class="pricing-footer">
+            <a
+              href={plan.ctaLink}
+              class={`btn btn-lg ${plan.destacado ? 'btn-primary' : 'btn-outline'}`}
+            >
+              {plan.cta}
+            </a>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    <p class="pricing-note">
+      * Todos los planes incluyen una consulta inicial gratuita de 30 minutos
+    </p>
+  </div>
+</section>
+
+<style>
+  .pricing {
+    background-color: var(--color-white);
+  }
+
+  .section-tag {
+    display: inline-block;
+    padding: var(--spacing-2) var(--spacing-4);
+    background-color: rgba(26, 54, 93, 0.1);
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-6);
+    align-items: stretch;
+  }
+
+  .pricing-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-8);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--color-primary);
+    background: linear-gradient(to bottom, rgba(26, 54, 93, 0.02), var(--color-white));
+    transform: scale(1.05);
+    z-index: 1;
+  }
+
+  .pricing-card.featured:hover {
+    transform: scale(1.05) translateY(-5px);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: var(--spacing-2) var(--spacing-4);
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+
+  .pricing-header {
+    text-align: center;
+    padding-bottom: var(--spacing-6);
+    border-bottom: 1px solid var(--color-gray-100);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .plan-name {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .plan-description {
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-5);
+  }
+
+  .plan-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: var(--spacing-1);
+  }
+
+  .price {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .period {
+    font-size: var(--text-base);
+    color: var(--color-secondary);
+  }
+
+  .plan-features {
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-8);
+  }
+
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3) 0;
+    font-size: var(--text-sm);
+    color: var(--color-secondary-dark);
+  }
+
+  .feature-icon {
+    flex-shrink: 0;
+    color: var(--color-accent);
+    margin-top: 2px;
+  }
+
+  .pricing-footer {
+    margin-top: auto;
+  }
+
+  .pricing-footer .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pricing-note {
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    margin-top: var(--spacing-10);
+  }
+
+  @media (max-width: 1024px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 450px;
+      margin: 0 auto;
+    }
+
+    .pricing-card.featured {
+      transform: none;
+      order: -1;
+    }
+
+    .pricing-card.featured:hover {
+      transform: translateY(-5px);
+    }
+  }
+</style>

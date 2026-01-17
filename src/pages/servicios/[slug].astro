@@ -1,0 +1,564 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const servicios = [
+    {
+      slug: 'consultoria-estrategica',
+      nombre: 'Consultoría Estratégica',
+      descripcion: 'Desarrollamos estrategias personalizadas que alinean su visión empresarial con acciones concretas para alcanzar sus objetivos de crecimiento.',
+      descripcionLarga: 'Nuestra consultoría estratégica va más allá de los diagnósticos tradicionales. Trabajamos junto a su equipo directivo para comprender profundamente su negocio, identificar oportunidades de mercado y diseñar hojas de ruta ejecutables que transformen su visión en resultados tangibles.',
+      imagen: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop',
+      beneficios: [
+        'Análisis exhaustivo del entorno competitivo y tendencias del mercado',
+        'Definición clara de objetivos estratégicos a corto, mediano y largo plazo',
+        'Desarrollo de planes de acción con métricas y KPIs específicos',
+        'Identificación de ventajas competitivas sostenibles',
+        'Alineación de recursos y capacidades organizacionales',
+        'Acompañamiento en la implementación y seguimiento de resultados'
+      ],
+      proceso: [
+        { titulo: 'Diagnóstico', descripcion: 'Análisis profundo de la situación actual, fortalezas, debilidades y contexto de mercado.' },
+        { titulo: 'Visión estratégica', descripcion: 'Co-creación de la visión futura y definición de objetivos estratégicos.' },
+        { titulo: 'Diseño del plan', descripcion: 'Desarrollo del roadmap estratégico con iniciativas priorizadas.' },
+        { titulo: 'Implementación', descripcion: 'Acompañamiento en la ejecución y ajustes según evolución.' }
+      ]
+    },
+    {
+      slug: 'optimizacion-procesos',
+      nombre: 'Optimización de Procesos',
+      descripcion: 'Identificamos ineficiencias y rediseñamos sus procesos operativos para maximizar productividad y reducir costos significativamente.',
+      descripcionLarga: 'Aplicamos metodologías probadas como Lean Management y Six Sigma para transformar sus operaciones. Nuestro enfoque combina el análisis de datos con la experiencia práctica para lograr mejoras sostenibles que impactan directamente en su rentabilidad.',
+      imagen: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&h=500&fit=crop',
+      beneficios: [
+        'Reducción de tiempos de ciclo y eliminación de cuellos de botella',
+        'Disminución de costos operativos entre 15% y 40%',
+        'Mejora en la calidad y consistencia de entregables',
+        'Automatización de tareas repetitivas y de bajo valor',
+        'Mayor satisfacción del cliente interno y externo',
+        'Cultura de mejora continua en toda la organización'
+      ],
+      proceso: [
+        { titulo: 'Mapeo de procesos', descripcion: 'Documentación detallada de flujos actuales y puntos de dolor.' },
+        { titulo: 'Análisis de valor', descripcion: 'Identificación de actividades que agregan valor vs. desperdicio.' },
+        { titulo: 'Rediseño', descripcion: 'Propuesta de nuevos procesos optimizados y automatizados.' },
+        { titulo: 'Implementación', descripcion: 'Ejecución controlada con medición de mejoras.' }
+      ]
+    },
+    {
+      slug: 'analisis-datos',
+      nombre: 'Análisis de Datos',
+      descripcion: 'Transformamos sus datos en insights accionables que potencian la toma de decisiones informadas y estratégicas.',
+      descripcionLarga: 'En la era digital, los datos son su activo más valioso. Le ayudamos a construir capacidades analíticas que conviertan información dispersa en conocimiento estratégico, permitiendo decisiones basadas en evidencia que impulsen su competitividad.',
+      imagen: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop',
+      beneficios: [
+        'Dashboards ejecutivos con KPIs en tiempo real',
+        'Modelos predictivos para anticipar tendencias de mercado',
+        'Segmentación avanzada de clientes y comportamientos',
+        'Optimización de precios y promociones basada en datos',
+        'Detección temprana de riesgos y oportunidades',
+        'Democratización del acceso a información relevante'
+      ],
+      proceso: [
+        { titulo: 'Auditoría de datos', descripcion: 'Evaluación de fuentes, calidad y disponibilidad de datos.' },
+        { titulo: 'Arquitectura', descripcion: 'Diseño de la infraestructura analítica necesaria.' },
+        { titulo: 'Modelado', descripcion: 'Desarrollo de modelos analíticos y predictivos.' },
+        { titulo: 'Visualización', descripcion: 'Creación de dashboards y reportes automatizados.' }
+      ]
+    },
+    {
+      slug: 'transformacion-digital',
+      nombre: 'Transformación Digital',
+      descripcion: 'Guiamos su organización hacia la adopción de tecnologías digitales que revolucionan su modelo de negocio y operaciones.',
+      descripcionLarga: 'La transformación digital no es solo tecnología; es un cambio cultural profundo. Le acompañamos en este viaje integrando personas, procesos y tecnología para crear una organización ágil, innovadora y preparada para los desafíos del futuro.',
+      imagen: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=500&fit=crop',
+      beneficios: [
+        'Modernización de sistemas legacy y deuda técnica',
+        'Implementación de soluciones cloud y SaaS',
+        'Digitalización de la experiencia del cliente',
+        'Automatización inteligente con IA y machine learning',
+        'Nuevos canales digitales de venta y servicio',
+        'Cultura de innovación y agilidad organizacional'
+      ],
+      proceso: [
+        { titulo: 'Assessment digital', descripcion: 'Evaluación de madurez digital y brechas tecnológicas.' },
+        { titulo: 'Roadmap', descripcion: 'Diseño del plan de transformación priorizado.' },
+        { titulo: 'Pilotos', descripcion: 'Pruebas de concepto y validación de soluciones.' },
+        { titulo: 'Escalamiento', descripcion: 'Despliegue a toda la organización con gestión del cambio.' }
+      ]
+    },
+    {
+      slug: 'gestion-cambio',
+      nombre: 'Gestión del Cambio',
+      descripcion: 'Facilitamos transiciones organizacionales exitosas asegurando la adopción efectiva de nuevas prácticas por parte de su equipo.',
+      descripcionLarga: 'El 70% de las iniciativas de cambio fracasan por resistencia organizacional. Nuestro enfoque centrado en las personas garantiza que las transformaciones se arraiguen en la cultura, generando compromiso y resultados duraderos.',
+      imagen: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop',
+      beneficios: [
+        'Diagnóstico de preparación para el cambio',
+        'Estrategias de comunicación y engagement',
+        'Identificación y activación de agentes de cambio',
+        'Programas de capacitación y desarrollo de habilidades',
+        'Gestión proactiva de resistencias',
+        'Medición de adopción y ajustes en tiempo real'
+      ],
+      proceso: [
+        { titulo: 'Análisis de impacto', descripcion: 'Mapeo de stakeholders y evaluación de disposición al cambio.' },
+        { titulo: 'Estrategia', descripcion: 'Plan de comunicación, capacitación y acompañamiento.' },
+        { titulo: 'Activación', descripcion: 'Lanzamiento con champions y early adopters.' },
+        { titulo: 'Sostenibilidad', descripcion: 'Refuerzo de comportamientos y celebración de logros.' }
+      ]
+    }
+  ];
+
+  return servicios.map((servicio) => ({
+    params: { slug: servicio.slug },
+    props: { servicio }
+  }));
+}
+
+interface Servicio {
+  slug: string;
+  nombre: string;
+  descripcion: string;
+  descripcionLarga: string;
+  imagen: string;
+  beneficios: string[];
+  proceso: { titulo: string; descripcion: string }[];
+}
+
+const { servicio } = Astro.props as { servicio: Servicio };
+---
+
+<Layout
+  title={servicio.nombre}
+  description={servicio.descripcion}
+  currentPage="servicios"
+>
+  <!-- Hero Section -->
+  <section class="service-hero">
+    <div class="service-hero-bg">
+      <img src={servicio.imagen} alt={servicio.nombre} />
+      <div class="service-hero-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="service-hero-content">
+        <a href="/" class="breadcrumb">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+          Volver al inicio
+        </a>
+        <h1 class="service-hero-title">{servicio.nombre}</h1>
+        <p class="service-hero-subtitle">{servicio.descripcion}</p>
+        <a href="/contacto" class="btn btn-primary btn-lg">
+          Solicitar información
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description Section -->
+  <section class="service-description section">
+    <div class="container">
+      <div class="description-grid">
+        <div class="description-content">
+          <h2>Sobre este servicio</h2>
+          <p class="description-text">{servicio.descripcionLarga}</p>
+        </div>
+        <div class="description-stats">
+          <div class="stat-item">
+            <span class="stat-value">98%</span>
+            <span class="stat-label">Clientes satisfechos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">150+</span>
+            <span class="stat-label">Proyectos completados</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">35%</span>
+            <span class="stat-label">Mejora promedio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="service-benefits section bg-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Beneficios clave</h2>
+        <p class="section-subtitle">Lo que obtendrá al trabajar con nosotros</p>
+      </div>
+      <ul class="benefits-grid">
+        {servicio.beneficios.map((beneficio) => (
+          <li class="benefit-item">
+            <svg class="benefit-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>{beneficio}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="service-process section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Nuestro proceso</h2>
+        <p class="section-subtitle">Un enfoque estructurado para garantizar resultados</p>
+      </div>
+      <div class="process-grid">
+        {servicio.proceso.map((paso, index) => (
+          <article class="process-card">
+            <span class="process-number">{String(index + 1).padStart(2, '0')}</span>
+            <h3 class="process-title">{paso.titulo}</h3>
+            <p class="process-description">{paso.descripcion}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="service-cta section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>¿Listo para comenzar?</h2>
+        <p>
+          Contáctenos hoy para una consulta gratuita y descubra cómo podemos
+          ayudarle a alcanzar sus objetivos con {servicio.nombre.toLowerCase()}.
+        </p>
+        <div class="cta-actions">
+          <a href="/contacto" class="btn btn-primary btn-lg">
+            Agendar consulta gratuita
+          </a>
+          <a href="tel:+34900123456" class="cta-phone">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            O llámenos: +34 900 123 456
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero */
+  .service-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-16) 0;
+  }
+
+  .service-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .service-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(15, 39, 68, 0.95) 0%,
+      rgba(26, 54, 93, 0.85) 100%
+    );
+  }
+
+  .service-hero-content {
+    max-width: 700px;
+    color: var(--color-white);
+  }
+
+  .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    color: var(--color-gray-300);
+    font-size: var(--text-sm);
+    margin-bottom: var(--spacing-6);
+    transition: color var(--transition-fast);
+  }
+
+  .breadcrumb:hover {
+    color: var(--color-white);
+  }
+
+  .service-hero-title {
+    font-size: var(--text-5xl);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-5);
+  }
+
+  .service-hero-subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-gray-200);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-8);
+  }
+
+  .service-hero .btn-primary {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .service-hero .btn-primary:hover {
+    background-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+  }
+
+  /* Description */
+  .description-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--spacing-12);
+    align-items: center;
+  }
+
+  .description-content h2 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--spacing-5);
+  }
+
+  .description-text {
+    font-size: var(--text-lg);
+    color: var(--color-secondary-dark);
+    line-height: 1.8;
+  }
+
+  .description-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+    padding: var(--spacing-8);
+    background-color: var(--color-gray-50);
+    border-radius: var(--radius-xl);
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: var(--spacing-4);
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: var(--spacing-2);
+  }
+
+  .stat-label {
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Benefits */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-5);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-4);
+    padding: var(--spacing-5);
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .benefit-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .benefit-icon {
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  .benefit-item span {
+    font-size: var(--text-base);
+    color: var(--color-secondary-dark);
+    line-height: 1.6;
+  }
+
+  /* Process */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-6);
+  }
+
+  .process-card {
+    position: relative;
+    padding: var(--spacing-8) var(--spacing-6);
+    background-color: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .process-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .process-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .process-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .process-description {
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* CTA */
+  .service-cta {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    font-size: var(--text-4xl);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .cta-content p {
+    font-size: var(--text-lg);
+    color: var(--color-gray-200);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+  }
+
+  .service-cta .btn-primary {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .service-cta .btn-primary:hover {
+    background-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+  }
+
+  .cta-phone {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    color: var(--color-gray-300);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .cta-phone:hover {
+    color: var(--color-white);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .description-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .description-stats {
+      flex-direction: row;
+    }
+
+    .stat-item {
+      border-bottom: none;
+      border-right: 1px solid var(--color-gray-200);
+      flex: 1;
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .service-hero-title {
+      font-size: var(--text-4xl);
+    }
+
+    .benefits-grid,
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .description-stats {
+      flex-direction: column;
+    }
+
+    .stat-item {
+      border-right: none;
+      border-bottom: 1px solid var(--color-gray-200);
+    }
+
+    .stat-item:last-child {
+      border-bottom: none;
+    }
+  }
+</style>
